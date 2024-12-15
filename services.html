@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>About Me</title>
+   <link rel="stylesheet" href="styles.css">
+   <style>
+       body {
+           font-family: 'Georgia', serif;
+           margin: 0;
+           padding: 0;
+           background: url('images/white-technology-background.avif') no-repeat center center fixed;
+           background-size: cover;
+           color: #fff;
+           scroll-behavior: smooth;
+           animation: pageFadeIn 1.5s ease-in-out;
+       }
+
+       @keyframes pageFadeIn {
+           from {
+               opacity: 0;
+           }
+           to {
+               opacity: 1;
+           }
+       }
+
+       @keyframes navSlideDown {
+           from {
+               transform: translateY(-100%);
+           }
+           to {
+               transform: translateY(0);
+           }
+       }
+
+       @keyframes pageItemsMoveUp {
+           from {
+               transform: translateY(100px);
+               opacity: 0;
+           }
+           to {
+               transform: translateY(0);
+               opacity: 1;
+           }
+       }
+
+       /* Click animation for Fady Emad */
+       @keyframes clickyAnimation {
+           0% {
+               transform: scale(1);
+           }
+           30% {
+               transform: scale(0.95);
+           }
+           50% {
+               transform: scale(1.05);
+           }
+           70% {
+               transform: scale(1.05);
+           }
+           100% {
+               transform: scale(1);
+           }
+       }
+
+       nav {
+           background-color: #000;
+           color: #fff;
+           padding: 20px 50px;
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+           position: sticky;
+           top: 0;
+           z-index: 1000;
+           animation: navSlideDown 1s ease-in-out;
+       }
+
+       nav .logo {
+           font-size: 1.8rem;
+           font-weight: bold;
+           letter-spacing: 2px;
+           color: #fff;
+           cursor: pointer;
+           transition: color 0.3s ease;
+       }
+
+       nav .logo:active {
+           animation: clickyAnimation 0.3s ease-out;
+       }
+
+       nav ul {
+           list-style: none;
+           display: flex;
+           gap: 20px;
+       }
+
+       nav ul li a {
+           color: #fff;
+           text-decoration: none;
+           font-size: 1.2rem;
+           font-weight: bold;
+           transition: color 0.3s ease, transform 0.3s ease;
+       }
+
+       nav ul li a:hover,
+       nav ul li a:focus {
+           color: #f4b400;
+           transform: scale(1.1);
+       }
+
+       .services-container {
+           max-width: 1200px;
+           margin: 50px auto;
+           padding: 50px;
+           background: rgba(0, 0, 0, 0.6);
+           border-radius: 12px;
+           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+           animation: pageItemsMoveUp 1.5s ease-in-out;
+       }
+
+       h1 {
+           text-align: center;
+           font-size: 2.8rem;
+           font-weight: normal;
+           color: #fff;
+           margin-bottom: 50px;
+           cursor: pointer;
+           transition: color 0.3s ease;
+       }
+
+       h1:active {
+           animation: clickyAnimation 0.3s ease-out;
+       }
+
+       .service-box {
+           display: inline-block;
+           width: 26%;
+           margin: 20px;
+           padding: 20px;
+           border: 1px solid #ddd;
+           border-radius: 10px;
+           transition: transform 0.3s ease, box-shadow 0.3s ease;
+           text-align: center;
+           background: #333;
+           color: #fff;
+           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+           animation: pageItemsMoveUp 1.5s ease-in-out;
+       }
+
+       .service-box:hover {
+           transform: translateY(-10px);
+           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+       }
+
+       .service-box:active {
+           transform: scale(0.95);
+       }
+
+       .service-box img {
+           width: 75px;
+           height: 75px;
+           margin-bottom: 10px;
+           cursor: pointer;
+           transition: transform 0.3s ease;
+       }
+
+       .service-box img:hover {
+           transform: scale(1.1);
+       }
+
+       .service-box img:active {
+           transform: scale(0.9);
+       }
+
+       @keyframes fadeIn {
+           from {
+               opacity: 0;
+               transform: translateY(20px);
+           }
+           to {
+               opacity: 1;
+               transform: translateY(0);
+           }
+       }
+
+       .modal {
+           display: none;
+           position: fixed;
+           z-index: 1000;
+           left: 0;
+           top: 0;
+           width: 100%;
+           height: 100%;
+           overflow: auto;
+           background-color: rgba(0, 0, 0, 0.8);
+           justify-content: center;
+           align-items: center;
+           padding: 20px;
+       }
+
+       .modal-content {
+           position: relative;
+           max-width: 90%;
+           max-height: 90%;
+           overflow: hidden;
+       }
+
+       .modal img {
+           width: 100%;
+           height: auto;
+           display: block;
+           margin: 0 auto;
+       }
+
+       .close {
+           position: absolute;
+           top: 10px;
+           right: 25px;
+           color: #fff;
+           font-size: 30px;
+           font-weight: bold;
+           cursor: pointer;
+           z-index: 1001;
+       }
+
+       .close:hover,
+       .close:focus {
+           color: #f4b400;
+           text-decoration: none;
+           cursor: pointer;
+       }
+
+       .slider-container {
+           position: relative;
+           max-width: 100%;
+           overflow: hidden;
+           margin-bottom: 20px;
+       }
+
+       .slider {
+           display: flex;
+           transition: transform 0.5s ease;
+       }
+
+       .slider img {
+           width: 100%;
+           height: 250px;
+           object-fit: cover;
+           cursor: pointer;
+       }
+
+       .slider img:active {
+           transform: scale(0.9);
+       }
+
+       .slider-btn {
+           position: absolute;
+           top: 50%;
+           transform: translateY(-50%);
+           background-color: rgba(0, 0, 0, 0.5);
+           color: #fff;
+           border: none;
+           padding: 10px;
+           cursor: pointer;
+           z-index: 1;
+       }
+
+       .prev-btn {
+           left: 10px;
+       }
+
+       .next-btn {
+           right: 10px;
+       }
+
+       .pay-btn {
+           display: inline-block;
+           padding: 10px 20px;
+           background: #000;
+           color: #fff;
+           text-decoration: none;
+           border-radius: 5px;
+           transition: background 0.3s ease;
+           margin-top: 20px;
+       }
+
+       .pay-btn:hover {
+           background: #f4b400;
+       }
+
+       .pay-btn:active {
+           transform: scale(0.95);
+       }
+
+       .info-box {
+           background: #222;
+           padding: 30px;
+           margin-top: 40px;
+           border-radius: 10px;
+           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+           text-align: center;
+           opacity: 0;
+           transform: translateY(20px);
+           animation: fadeInInfo 1s ease-out forwards, pageItemsMoveUp 1.5s ease-in-out;
+           transition: transform 0.3s ease;
+       }
+
+       .info-box:active h2,
+       .info-box:active p {
+           transform: translateX(5px);
+           transition: transform 0.3s ease;
+       }
+
+       @keyframes fadeInInfo {
+           from {
+               opacity: 0;
+               transform: translateY(20px);
+           }
+           to {
+               opacity: 1;
+               transform: translateY(0);
+           }
+       }
+
+   </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Fady Emad</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="services-container">
+        <h1>Services</h1>
+
+        <!-- Service 1: CAD Modeling -->
+        <div class="service-box">
+            <img src="https://cdn-icons-png.freepik.com/512/6741/6741137.png" alt="CAD Icon" onclick="openModal(this)">
+            <h3>CAD Modeling</h3>
+            <p>Precise 2D and 3D design solutions for mechanical components.</p>
+            <p><strong>Price: $50</strong></p>
+            <div class="slider-container">
+                <div class="slider" id="slider1">
+                    <img src="images/cad-example.jpg" alt="CAD Example" onclick="openModal(this)">
+                </div>
+                <button class="slider-btn prev-btn" onclick="moveSlide(-1, 'slider1')">❮</button>
+                <button class="slider-btn next-btn" onclick="moveSlide(1, 'slider1')">❯</button>
+            </div>
+            <a href="contact.html" class="pay-btn">Contact Me</a>
+        </div>
+
+        <!-- Service 2: Engineering Simulations -->
+        <div class="service-box">
+            <img src="https://cdn-icons-png.flaticon.com/512/5360/5360529.png" alt="Simulation Icon" onclick="openModal(this)">
+            <h3>Engineering Simulations</h3>
+            <p>Thermal, structural, and fluid dynamic simulations to validate designs.</p>
+            <p><strong>Price: $50</strong></p>
+            <div class="slider-container">
+                <div class="slider" id="slider2">
+                    <img src="images/simulation-example.jpg" alt="Simulation Example" onclick="openModal(this)">
+                </div>
+                <button class="slider-btn prev-btn" onclick="moveSlide(-1, 'slider2')">❮</button>
+                <button class="slider-btn next-btn" onclick="moveSlide(1, 'slider2')">❯</button>
+            </div>
+            <a href="contact.html" class="pay-btn">Contact Me</a>
+        </div>
+
+        <!-- Service 3: Product Design -->
+        <div class="service-box">
+            <img src="https://cdn-icons-png.flaticon.com/512/2117/2117014.png" alt="Product Design Icon" onclick="openModal(this)">
+            <h3>Product Design</h3>
+            <p>Innovative concepts tailored to industrial and consumer needs.</p>
+            <p><strong>Price: $50</strong></p>
+            <div class="slider-container">
+                <div class="slider" id="slider3">
+                    <img src="images/imagesdesign-example-1.png" alt="Design Example 1" onclick="openModal(this)">
+                    <img src="images/imagesdesign-example-2.png" alt="Design Example 2" onclick="openModal(this)">
+                </div>
+                <button class="slider-btn prev-btn" onclick="moveSlide(-1, 'slider3')">❮</button>
+                <button class="slider-btn next-btn" onclick="moveSlide(1, 'slider3')">❯</button>
+            </div>
+            <a href="contact.html" class="pay-btn">Contact Me</a>
+        </div>
+
+        <div class="info-box">
+            <h2>Project Duration</h2>
+            <p>Your project will take anywhere from 1 to 8 days depending on the complexity and scope.</p>
+            <p>If you have any further questions or need clarification, feel free to <a href="contact.html">contact me</a>.</p>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal" onclick="closeModal()">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImg" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        function moveSlide(n, sliderId) {
+    const slider = document.getElementById(sliderId);
+    const slides = slider.querySelectorAll('img');
+    const slideCount = slides.length;
+    let currentTransform = slider.style.transform.match(/-?\d+/);
+    let currentSlide = currentTransform ? Math.abs(parseInt(currentTransform[0]) / 100) : 0;
+    currentSlide = (currentSlide + n + slideCount) % slideCount;
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`; // Fixed syntax for translateX
+}
+
+function openModal(img) {
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("modalImg");
+    modal.style.display = "flex";
+    modalImg.src = img.src;  // Correct image source setting
+}
+
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+    </script>
+
+  <footer>
+    <p>&copy; 2024 Fady Emad. All Rights Reserved. Connect with me: 
+        <a href="https://www.linkedin.com">LinkedIn</a> | 
+        <a href="https://github.com">GitHub</a> | 
+        <a href="mailto:email@example.com">Email</a>
+    </p>
+  </footer>
+</body>
+</html>
