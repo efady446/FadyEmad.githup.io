@@ -16,9 +16,8 @@
            scroll-behavior: smooth;
            animation: pageFadeIn 1.5s ease-in-out;
 
-    min-height: 100vh; /* لجعل الصفحة تملأ ارتفاع الشاشة بالكامل */
-    display: flex;
-    flex-direction: column;
+     height: 100%; /* تأكيد أن الجسم كله يمتد مع الصفحة */
+    box-sizing: border-box;
        }
 
        @keyframes pageFadeIn {
@@ -127,16 +126,16 @@
        }
 
 footer {
-    margin: 0;
-    padding: 10px 0; /* تحكم بحجم التباعد الداخلي */
-    text-align: center;
     background-color: #000;
     color: #fff;
-    position: fixed; /* لضمان عدم التمدد */
+    text-align: center;
+    padding: 20px 0; /* يحدد التباعد الداخلي فقط */
+    margin: 0; /* إزالة أي تباعد خارجي زائد */
+    position: relative; /* يتأكد من بقاءه طبيعي بدون أي تغيير للموقع */
     bottom: 0;
     width: 100%;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
 }
-
 
       
 
