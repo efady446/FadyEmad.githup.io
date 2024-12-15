@@ -117,7 +117,6 @@
        }
 
        .services-container {
-          flex: 1; /* يجعل المحتوى يأخذ المساحة المتبقية من الصفحة */
            max-width: 1200px;
            margin: 50px auto;
            padding: 50px;
@@ -128,11 +127,15 @@
        }
 
 footer {
+    margin: 0;
+    padding: 10px 0; /* تحكم بحجم التباعد الداخلي */
     text-align: center;
     background-color: #000;
     color: #fff;
-    padding: 10px 0;
-    margin-top: auto; /* يثبت الـ footer في الأسفل */
+    position: relative; /* لضمان عدم التمدد */
+    bottom: 0;
+    width: 100%;
+}
 
 
       
