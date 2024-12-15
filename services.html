@@ -116,6 +116,7 @@
        }
 
        .services-container {
+          flex: 0.5; /* هذا يجعل المحتوى يتمدد ليملأ المساحة */
            max-width: 1200px;
            margin: auto auto;
            padding: 50px;
@@ -123,20 +124,18 @@
            border-radius: 12px;
            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
            animation: pageItemsMoveUp 1.5s ease-in-out;
+          
        }
-
+      
 footer {
     background-color: #000;
     color: #fff;
     text-align: center;
-    padding: 20px 0; /* يحدد التباعد الداخلي فقط */
-    margin: 0; /* إزالة أي تباعد خارجي زائد */
-    position: relative; /* يتأكد من بقاءه طبيعي بدون أي تغيير للموقع */
-    bottom: 0;
+    padding: 20px 0;
+    margin: 0;
     width: 100%;
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
 }
-
       
 
        h1 {
