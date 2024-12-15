@@ -15,6 +15,10 @@
            color: #fff;
            scroll-behavior: smooth;
            animation: pageFadeIn 1.5s ease-in-out;
+
+    min-height: 100vh; /* لجعل الصفحة تملأ ارتفاع الشاشة بالكامل */
+    display: flex;
+    flex-direction: column;
        }
 
        @keyframes pageFadeIn {
@@ -113,6 +117,7 @@
        }
 
        .services-container {
+          flex: 1; /* يجعل المحتوى يأخذ المساحة المتبقية من الصفحة */
            max-width: 1200px;
            margin: 50px auto;
            padding: 50px;
@@ -123,15 +128,12 @@
        }
 
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    text-align: center;
     background-color: #000;
     color: #fff;
-    text-align: center;
     padding: 10px 0;
-}
+    margin-top: auto; /* يثبت الـ footer في الأسفل */
+
 
       
 
