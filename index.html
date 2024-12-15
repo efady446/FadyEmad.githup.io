@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background: #fff; /* White background for clean design */
+            color: #333; /* Dark text color for readability */
+            overflow-x: hidden;
+        }
+        nav {
+            background-color: #000; /* Black background for navigation */
+            color: #fff;
+            padding: 20px 1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: -100px; /* Initially hidden above the viewport */
+            width: 100%;
+            z-index: 1000;
+            animation: slideDown 1s ease-out forwards; /* Slide down on load */
+        }
+        @keyframes slideDown {
+            from {
+                top: -100px; /* Start hidden */
+            }
+            to {
+                top: 0; /* Move to normal position */
+            }
+        }
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #fff;
+            cursor: pointer; /* Added cursor pointer for clickable effect */
+            transition: transform 0.3s ease;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            cursor: pointer; /* Added cursor pointer for clickable effect */
+        }
+        nav ul li a:hover {
+            color: #f4b400;
+        }
+
+        /* Header Section */
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            margin-top: 0;
+            background-image: url('file:///C:/Users/efady/Desktop/1_0onxDPXflG6_5WIvQQsPlQ.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(50px); /* Start below */
+            animation: fadeInUp 1s forwards; /* Move up on load */
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .text-overlay {
+            flex: 1;
+            padding-right: 30px;
+        }
+
+        .text-overlay h1 {
+            font-size: 2.8em;
+            margin: 0;
+            color: #fff;
+            cursor: pointer; /* Added cursor pointer for clickable effect */
+            transition: transform 0.3s ease;
+        }
+
+        .text-overlay p {
+            font-size: 1.4em;
+            margin: 10px 0;
+            color: #fff;
+            cursor: pointer; /* Added cursor pointer for clickable effect */
+            transition: transform 0.3s ease;
+        }
+
+        .text-overlay button {
+            padding: 12px 25px;
+            background-color: #fff;
+            color: black;
+            border: 2px solid black;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .text-overlay button:hover {
+            background-color: #f4b400;
+            color: white;
+        }
+
+        .image-container img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: fadeInUp 1.5s ease-out forwards; /* Fade-in and move-up */
+            cursor: pointer; /* Added cursor pointer for clickable effect */
+            transition: transform 0.3s ease;
+        }
+
+        /* Keyframes for Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 50px 20px;
+            background-color: #f4f4f4; /* Light gray for about section */
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px); /* Start below */
+            animation: fadeInUp 1.5s ease-out forwards; /* Move up on load */
+        }
+
+        .about-section h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+            cursor: pointer; /* Added cursor pointer for clickable effect */
+            transition: transform 0.3s ease;
+        }
+
+        .about-section p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #f4b400;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer; /* Added cursor pointer for clickable effect */
+            transition: transform 0.3s ease;
+        }
+
+        footer a:hover {
+            transform: scale(1.1); /* Apply scaling effect on hover */
+        }
+
+        /* CSS for click animations */
+        .animate-click {
+            cursor: pointer;
+        }
+
+        .animate-click:active {
+            animation: scaleUp 0.2s ease-in-out;
+        }
+
+        .animate-click img:active {
+            animation: rotate 0.5s ease;
+        }
+
+        .animate-click h1:active {
+            animation: bounce 0.3s ease;
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="nav">
+        <div class="logo animate-click">Fady Emad</div>
+        <ul>
+            <li><a href="index.html" class="animate-click">Home</a></li>
+            <li><a href="services.html" class="animate-click">Services</a></li>
+            <li><a href="contact.html" class="animate-click">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Home Section with Background Image -->
+    <header>
+        <div class="header-container">
+            <div class="text-overlay">
+                <h1 class="animate-click">Innovative Mechanical Design</h1>
+                <p class="animate-click">Creating engineering solutions that blend creativity with precision</p>
+                <a href="contact.html"><button class="animate-click">Contact Me</button></a>
+            </div>
+            <div class="image-container">
+                <img src="file:///C:/Users/efady/Desktop/466580974_8766409346745492_8406224310872899333_n.jpg" alt="Fady Emad - Mechanical Engineer" class="animate-click">
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="about-section animate-click" id="about-section">
+        <h1>About Me</h1>
+        <p>
+            Hello! I'm Fady Emad, a professional mechanical engineer specializing in creating innovative mechanical design solutions. 
+            My expertise spans CAD modeling, structural analysis, and product development.
+        </p>
+        <p>
+            Let me bring your mechanical visions to life!
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Fady Emad. All Rights Reserved. Connect with me: 
+            <a href="https://www.linkedin.com" class="animate-click">LinkedIn</a> | 
+            <a href="https://github.com" class="animate-click">GitHub</a> | 
+            <a href="mailto:email@example.com" class="animate-click">Email</a>
+        </p>
+    </footer>
+
+</body>
+</html>
