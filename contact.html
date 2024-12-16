@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css/css/flag-icons.min.css"> <!-- Flag Icons -->
     <style>
+        /* Existing CSS */
         :root {
             --primary-color: #000;
             --secondary-color: #fff;
@@ -23,7 +24,7 @@
             background: url('images/contact-us.jpg') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-color);
-            animation: fadeIn 2s ease-in-out;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
         nav {
@@ -241,57 +242,54 @@
     </nav>
     <div class="contact-container">
         <h1 class="clickable">Contact Me</h1>
-        <form id="contact-form">
+        <p>To upload files, please use this <a href="https://docs.google.com/forms/d/e/1FAIpQLSeyFN7KOrKm1GE8FhlWMQal8pv2nuLiSy7Ylpyc6QMUz9Nl9Q/viewform?usp=header" target="_blank">Google Form</a>.</p>
+        <form id="contact-form" action="https://formspree.io/f/xwpkdlvd" method="POST">
             <div class="form-group">
                 <label for="name" class="clickable">Full Name</label>
-                <input type="text" id="name" placeholder="Enter your full name" required>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                 <div class="error-message" id="name-error"></div>
             </div>
             <div class="form-group">
                 <label for="email" class="clickable">Email Address</label>
-                <input type="email" id="email" placeholder="Enter your email address" required>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
                 <div class="error-message" id="email-error"></div>
             </div>
             <div class="form-group phone-input">
-                <label for="phone" class="clickable">Phone Number</label>
-                <select id="country-code" required>
-                    <option value="+1" class="flag-icon-us">🇺🇸 +1 (USA)</option>
-                    <option value="+44" class="flag-icon-gb">🇬🇧 +44 (UK)</option>
-                    <option value="+91" class="flag-icon-in">🇮🇳 +91 (India)</option>
-                    <option value="+61" class="flag-icon-au">🇦🇺 +61 (Australia)</option>
-                    <option value="+49" class="flag-icon-de">🇩🇪 +49 (Germany)</option>
-                    <option value="+33" class="flag-icon-fr">🇫🇷 +33 (France)</option>
-                    <option value="+81" class="flag-icon-jp">🇯🇵 +81 (Japan)</option>
-                    <option value="+55" class="flag-icon-br">🇧🇷 +55 (Brazil)</option>
-                    <option value="+27" class="flag-icon-za">🇿🇦 +27 (South Africa)</option>
-                    <option value="+20" class="flag-icon-eg">🇪🇬 +20 (Egypt)</option>
-                </select>
-                <input type="tel" id="phone" placeholder="Enter your phone number" required>
-                <div class="error-message" id="phone-error"></div>
-            </div>
+    <label for="phone" class="clickable">Phone Number</label>
+    <div>
+        <select name="country-code" id="country-code" required>
+            <option value="+1" data-flag="us" selected>+1 USA</option>
+            <option value="+44" data-flag="gb">+44 UK</option>
+            <option value="+61" data-flag="au">+61 Australia</option>
+            <option value="+49" data-flag="de">+49 Germany</option>
+            <option value="+33" data-flag="fr">+33 France</option>
+            <option value="+91" data-flag="in">+91 India</option>
+            <option value="+20" data-flag="eg">+20 Egypt</option>
+            <option value="+34" data-flag="es">+34 Spain</option>
+            <option value="+39" data-flag="it">+39 Italy</option>
+            <option value="+81" data-flag="jp">+81 Japan</option>
+            <option value="+82" data-flag="kr">+82 South Korea</option>
+            <option value="+55" data-flag="br">+55 Brazil</option>
+            <option value="+86" data-flag="cn">+86 China</option>
+            <option value="+7" data-flag="ru">+7 Russia</option>
+            <option value="+27" data-flag="za">+27 South Africa</option>
+            <option value="+971" data-flag="ae">+971 UAE</option>
+        </select>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+    </div>
+    <div class="error-message" id="phone-error"></div>
+</div>
+
             <div class="form-group">
                 <label for="message" class="clickable">Message</label>
-                <textarea id="message" placeholder="Write your message here" required></textarea>
+                <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
                 <div class="error-message" id="message-error"></div>
             </div>
-            <div class="service-selection clickable">
-                <h2>Select Service</h2>
-                <div>
-                    <input type="checkbox" id="cad" name="service" value="cad">
-                    <label for="cad">CAD Modeling</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="product-design" name="service" value="product-design">
-                    <label for="product-design">Product Design</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="simulation" name="service" value="simulation">
-                    <label for="simulation">Engineering Simulation</label>
-                </div>
-            </div>
-            <div class="file-upload clickable">
-                <label>Upload a file</label>
-                <input type="file" id="file" accept="image/*, .pdf, .doc, .docx, .txt">
+            <div class="service-selection">
+                <h2 class="clickable">Select Services</h2>
+                <label><input type="checkbox" name="services" value="CAD Modeling"> CAD Modeling</label><br>
+                <label><input type="checkbox" name="services" value="Engineering Simulations"> Engineering Simulations</label><br>
+                <label><input type="checkbox" name="services" value="Product Design"> Product Design</label><br>
             </div>
             <button type="submit" class="clickable">Send Message</button>
         </form>
@@ -303,5 +301,23 @@
             <a href="mailto:email@example.com" class="clickable">Email</a>
         </p>
     </footer>
+    <script>
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent page reload
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    alert('Thank you for your message!');
+                    form.reset();
+                } else {
+                    alert('Oops! Something went wrong.');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
