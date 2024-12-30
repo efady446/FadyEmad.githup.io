@@ -249,11 +249,22 @@
            overflow: hidden;
            margin-bottom: 20px;
        }
+      
+      .slider video {
+    width: 100%; /* Adjust to fit the slider */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Avoid inline spacing issues */
+}
 
        .slider {
            display: flex;
            transition: transform 0.5s ease;
+           overflow: hidden;
+           position: relative;
+
+
        }
+      
 
        .slider img {
            width: 100%;
@@ -266,6 +277,9 @@
            transform: scale(0.9);
        }
 
+      .slider video {
+    flex-shrink: 0; /* Prevent resizing */
+}
        .slider-btn {
            position: absolute;
            top: 50%;
@@ -422,7 +436,8 @@
     <script>
         function moveSlide(n, sliderId) {
     const slider = document.getElementById(sliderId);
-    const slides = slider.querySelectorAll('img');
+   // const slides = slider.querySelectorAll('img');
+    const slides = document.querySelectorAll('#slider3 img, #slider3 video');
     const slideCount = slides.length;
     let currentTransform = slider.style.transform.match(/-?\d+/);
     let currentSlide = currentTransform ? Math.abs(parseInt(currentTransform[0]) / 100) : 0;
