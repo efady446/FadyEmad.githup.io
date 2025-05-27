@@ -317,6 +317,36 @@
         .form-success-message, .form-error-message { color: var(--bg-deep-space) } 
 
 
+/* Add these new CSS variables to your :root */
+        :root {
+            /* ... (keep all your existing variables) ... */
+            --white-pure: #FFFFFF;
+            --black-text: #111827; /* Dark gray, almost black for text on light bg */
+            --placeholder-light-bg: #9ca3af; /* Tailwind gray-400 for placeholders on light bg */
+        }
+
+   
+
+        /* AI Insight Section - Textarea specific styling */
+        #ai-insight-input {
+            background-color: var(--white-pure); /* Light background */
+            color: var(--black-text); /* Black text for user input */
+            border: 1px solid var(--border-cyber); /* Keep a border consistent with dark inputs */
+            /* Keep existing Tailwind classes for padding, rounded corners etc. */
+        }
+        #ai-insight-input::placeholder {
+            color: var(--placeholder-light-bg); /* Placeholder for light background */
+            opacity: 1; /* Ensure placeholder is fully visible */
+        }
+        #ai-insight-input:focus {
+            border-color: var(--accent-cyber-glow); /* Cyber glow focus border */
+            box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.25); /* Focus ring consistent with theme */
+            background-color: var(--white-pure); /* Ensure background stays light on focus */
+            color: var(--black-text); /* Ensure text stays black on focus */
+        }
+
+
+        
     </style>
 </head>
 <body class="antialiased">
@@ -386,12 +416,12 @@
         </div>
     </section>
     
-    <section id="ai-insights" class="py-16 md:py-24 bg-dark-blue">
+ <section id="ai-insights" class="py-16 md:py-24 bg-dark-blue">
         <div class="container mx-auto px-6">
             <h2 class="section-heading text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-center">Unlock Project Potential</h2>
             <div class="max-w-2xl mx-auto bg-dark-blue-light p-6 md:p-8 rounded-lg shadow-xl animate-fadeInUpDelayed opacity-0" style="animation-delay: 0.3s;">
                 <p class="text-center mb-6">Have an engineering challenge or a project idea? Describe it below, and let AI suggest how my skills can help!</p>
-                <textarea id="ai-insight-input" rows="4" class="w-full p-3 rounded-md focus:border-accent-cyber-glow focus:ring-accent-cyber-glow placeholder-text-cosmic-dust" placeholder="e.g., 'I need to design a lightweight drone frame' or 'Optimize a heat exchanger for better efficiency'"></textarea>
+                <textarea id="ai-insight-input" rows="4" class="w-full p-3 rounded-md focus:ring-0" placeholder="e.g., 'I need to design a lightweight drone frame' or 'Optimize a heat exchanger for better efficiency'"></textarea>
                 <button id="ai-insight-button" class="btn-ai w-full mt-4 py-3 px-6 rounded-md text-base font-semibold inline-flex items-center justify-center">
                     <span class="mr-2">🚀</span> Analyze with AI
                 </button>
@@ -401,7 +431,6 @@
             </div>
         </div>
     </section>
-
     <section id="services" class="py-16 md:py-24 bg-dark-blue-light">
         <div class="container mx-auto px-6">
             <h2 class="section-heading text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16">What I Offer</h2>
