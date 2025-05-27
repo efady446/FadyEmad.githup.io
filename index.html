@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fady Emad - Mechanical Engineer | Cyber Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+    <link rel="icon" href="images/logo.png" type="image/png" onerror="this.href='https://placehold.co/32x32/00F0FF/0F0F28?text=FE'">
+    <style>
+        :root {
+            --bg-deep-space: #0F0F28;
+            --bg-card-nebula: #1A1A3D;
+            --bg-element-dark: #10102c;
+            --border-cyber: #2A2A5A; /* Slightly more visible border */
+            --accent-cyber-glow: #00F0FF; /* Electric Cyan/Blue */
+            --accent-secondary-flare: #FF00C1; /* Vibrant Magenta/Pink */
+            --text-starbright: #F0F8FF; /* Alice Blue - very bright */
+            --text-cosmic-dust: #A0A8C0; /* Lighter grey/blue */
+            --shadow-glow: rgba(0, 240, 255, 0.3); /* Cyan glow for shadows */
+            --shadow-dark: rgba(0,0,0, 0.5);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background-color: var(--bg-deep-space);
+            color: var(--text-starbright); 
+        }
+        /* Custom scrollbar - Cyber Themed */
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #050510; }
+        ::-webkit-scrollbar-thumb { background: var(--accent-cyber-glow); border-radius: 6px; border: 2px solid #050510; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-secondary-flare); }
+
+        /* Enhanced Animations */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInUpDelayed { from { opacity: 0; transform: translateY(70px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDownNav { from { transform: translateY(-150%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes slideInLeftSkew { from { opacity: 0; transform: translateX(-100px) skewX(-10deg); } to { opacity: 1; transform: translateX(0) skewX(0deg); } }
+        @keyframes slideInRightSkew { from { opacity: 0; transform: translateX(100px) skewX(10deg); } to { opacity: 1; transform: translateX(0) skewX(0deg); } }
+        @keyframes zoomInHeavy { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
+        @keyframes pulseGlowBorder {
+            0% { box-shadow: 0 0 8px var(--accent-cyber-glow), inset 0 0 8px var(--accent-cyber-glow); }
+            50% { box-shadow: 0 0 16px var(--accent-cyber-glow), inset 0 0 16px var(--accent-cyber-glow); }
+            100% { box-shadow: 0 0 8px var(--accent-cyber-glow), inset 0 0 8px var(--accent-cyber-glow); }
+        }
+        @keyframes glitch { /* Simple glitch effect */
+            0%, 100% { transform: none; opacity: 1; }
+            25% { transform: skewX(3deg) translateX(5px); opacity: 0.8; }
+            50% { transform: skewX(-3deg) translateX(-5px); opacity: 1; }
+            75% { transform: skewX(1deg) translateX(2px); opacity: 0.9; }
+        }
+        @keyframes typingGlitch { /* Combined typing and subtle glitch */
+            from { width: 0; text-shadow: none; }
+            to { width: 100%; text-shadow: 0 0 3px var(--accent-cyber-glow); }
+            25%, 75% { text-shadow: 0 0 5px var(--accent-secondary-flare), 0 0 2px var(--accent-cyber-glow); transform: skewX(0.5deg); }
+        }
+        @keyframes blink-caret-cyber {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-cyber-glow); box-shadow: 0 0 5px var(--accent-cyber-glow); }
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .spinner {
+            display: inline-block; width: 1.2em; height: 1.2em;
+            border: 3px solid var(--accent-cyber-glow); border-right-color: transparent;
+            border-radius: 50%; animation: spin .75s linear infinite; margin-right: 0.5em;
+        }
+        @keyframes cardShine {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        @keyframes iconPulseZoom {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.25) rotate(5deg); filter: drop-shadow(0 0 5px var(--accent-cyber-glow));}
+        }
+        @keyframes buttonArrowAdvanced {
+            0% { transform: translateX(0); }
+            40% { transform: translateX(8px); opacity: 0.5; }
+            60% { transform: translateX(-3px); opacity: 1; }
+            100% { transform: translateX(0); }
+        }
+
+
+        .animate-fadeInUpDelayed { animation: fadeInUpDelayed 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .animate-slideInLeftSkew { animation: slideInLeftSkew 1.3s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .animate-slideInRightSkew { animation: slideInRightSkew 1.3s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .animate-zoomInHeavy { animation: zoomInHeavy 1s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        
+        /* Navbar */
+        #navbar { 
+            animation: slideDownNav 1s ease-out 0.5s forwards; opacity:0; 
+            background-color: rgba(10, 10, 30, 0.75); /* Darker, less blue */
+            backdrop-filter: blur(12px); 
+            border-bottom: 1px solid var(--border-cyber);
+        }
+        #navbar .container a:first-child { font-family: 'Major Mono Display', monospace; /* Example of a more techy font */ font-size: 1.8rem; letter-spacing: -1px; }
+        #navbar .container a:first-child:hover { text-shadow: 0 0 10px var(--accent-cyber-glow); }
+        nav a { 
+            position: relative; transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease; 
+            color: var(--text-cosmic-dust); font-weight: 500; letter-spacing: 0.05em;
+        }
+        nav a:hover { transform: translateY(-2px); color: var(--accent-cyber-glow); text-shadow: 0 0 8px var(--accent-cyber-glow); }
+        nav a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -6px; left: 0;
+            background: linear-gradient(90deg, var(--accent-cyber-glow), var(--accent-secondary-flare)); 
+            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        nav a:hover::after, nav a.active::after { width: 100%; }
+        nav a.active { color: var(--accent-cyber-glow); text-shadow: 0 0 5px var(--accent-cyber-glow); }
+        
+        /* Mobile Menu */
+        #mobile-menu { 
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); 
+            background-color: var(--bg-element-dark); border-top: 1px solid var(--border-cyber);
+        }
+        #mobile-menu a { color: var(--text-cosmic-dust); padding: 0.9rem 1.5rem; font-weight: 500; }
+        #mobile-menu a:hover { background-color: var(--border-cyber); color: var(--accent-cyber-glow); transform: translateX(8px); }
+
+
+        /* Hero Section */
+        #home { background-attachment: fixed; background-color: var(--bg-deep-space); }
+        .hero-headline {
+            overflow: hidden; border-right: .2em solid var(--accent-cyber-glow); white-space: nowrap;
+            margin: 0 auto; letter-spacing: .02em; /* Tighter for glitch */
+            animation: typingGlitch 3s steps(35, end) 0.8s 1 normal both, blink-caret-cyber .75s step-end 4s infinite;
+            text-shadow: 0 0 5px var(--accent-cyber-glow), 0 0 10px var(--accent-cyber-glow);
+        }
+         .hero-subheadline { animation-delay: 3.5s; color: var(--text-cosmic-dust); }
+         .hero-button { 
+            animation-delay: 4.2s; 
+            border: 2px solid var(--accent-cyber-glow);
+            box-shadow: 0 0 15px var(--shadow-glow), inset 0 0 10px var(--shadow-glow);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            color: var(--accent-cyber-glow); background-color: transparent;
+         }
+         .hero-button:hover {
+            background-color: var(--accent-cyber-glow); color: var(--bg-deep-space);
+            box-shadow: 0 0 25px var(--shadow-glow), inset 0 0 5px rgba(15,15,40,0.5);
+            transform: scale(1.05) translateY(-2px);
+         }
+         .hero-image-container { 
+            animation-delay: 1.0s; position: relative;
+         }
+         .hero-image-container img {
+            border-color: var(--accent-cyber-glow);
+            box-shadow: 0 0 20px var(--accent-cyber-glow), 0 0 30px var(--accent-cyber-glow);
+            animation: pulseGlowBorder 3s infinite ease-in-out;
+         }
+
+
+        /* Section heading */
+        .section-heading { 
+            color: var(--text-starbright); position: relative; display: inline-block;
+            text-shadow: 0 0 5px var(--accent-cyber-glow);
+        }
+        .section-heading::after {
+            content: ''; display: block; width: 80px; height: 3px; /* Thicker line */
+            background: linear-gradient(90deg, var(--accent-cyber-glow), var(--accent-secondary-flare)); 
+            margin: 12px 0 0; border-radius: 3px;
+            transform-origin: left; animation: growLine 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            opacity:0; animation-delay: 0.4s;
+        }
+        .section-heading.text-center::after { margin-left: auto; margin-right: auto; transform-origin: center; }
+        @keyframes growLine { from { transform: scaleX(0); opacity:0;} to { transform: scaleX(1); opacity:1;} }
+
+        /* Service Box */
+        .service-box {
+            background-color: var(--bg-card-nebula);
+            border: 1px solid var(--border-cyber);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease-out, border-color 0.3s ease-out;
+            position: relative; overflow: hidden; border-radius: 0.75rem; /* More rounded */
+        }
+        .service-box::before { /* Shine effect */
+            content: ''; position: absolute; top: 0; left: 0; width: 150px; /* Wider shine */
+            height: 100%;
+            background: linear-gradient(to right, transparent 0%, rgba(0, 240, 255, 0.15) 30%, rgba(0, 240, 255, 0.2) 50%, rgba(0, 240, 255, 0.15) 70%, transparent 100%);
+            transform: translateX(-200px) skewX(-30deg); 
+            transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+            pointer-events: none; 
+        }
+        .service-box:hover::before { transform: translateX(calc(100% + 200px)) skewX(-30deg); }
+        .service-box:hover {
+            transform: translateY(-15px) scale(1.04); 
+            box-shadow: 0 0 25px var(--shadow-glow), 0 10px 30px var(--shadow-dark);
+            border-color: var(--accent-cyber-glow);
+        }
+        .service-box .service-icon { transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .service-box:hover .service-icon { animation: iconPulseZoom 0.8s ease-out; }
+        .service-box h3 { color: var(--text-starbright); transition: color 0.3s ease, text-shadow 0.3s ease; }
+        .service-box:hover h3 { color: var(--accent-cyber-glow); text-shadow: 0 0 8px var(--accent-cyber-glow); }
+        .service-box p { color: var(--text-cosmic-dust); }
+        .service-box .font-bold { color: var(--accent-cyber-glow); }
+        .service-box .service-button {
+            background-color: transparent; border: 2px solid var(--accent-cyber-glow); color: var(--accent-cyber-glow);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            font-weight: 600;
+        }
+        .service-box .service-button .arrow-icon { transition: transform 0.3s ease; display: inline-block; }
+        .service-box:hover .service-button {
+            background-color: var(--accent-cyber-glow); color: var(--bg-deep-space); transform: scale(1.05);
+            box-shadow: 0 0 15px var(--accent-cyber-glow);
+        }
+        .service-box:hover .service-button .arrow-icon { animation: buttonArrowAdvanced 0.7s ease-in-out infinite; }
+
+
+        /* Modal */
+        .modal-content { background-color: var(--bg-card-nebula); color: var(--text-starbright); border: 2px solid var(--accent-cyber-glow); box-shadow: 0 0 30px var(--shadow-glow);}
+        .modal-content h3 { color: var(--text-starbright); text-shadow: 0 0 5px var(--accent-cyber-glow); }
+        .modal-content p { color: var(--text-cosmic-dust); }
+        .modal-content .font-bold { color: var(--accent-cyber-glow); }
+        .modal-content a { background-color: var(--accent-cyber-glow); color: var(--bg-deep-space); font-weight: 600; }
+        .modal-content a:hover { background-color: var(--accent-secondary-flare); transform: scale(1.03); box-shadow: 0 0 15px var(--accent-secondary-flare); }
+        .modal-slider-item { min-width: 100%; flex-shrink: 0; } /* Ensure slider items take full width */
+        .modal-slider-item video { max-height: 400px; /* Or desired height */ }
+
+
+        /* Contact Section Redesign */
+        #contact { background-color: var(--bg-deep-space); position: relative; overflow: hidden; }
+        #contact::before, #contact::after { /* Subtle animated geometric shapes */
+            content: ''; position: absolute; border: 1px solid rgba(0, 240, 255, 0.1); /* Cyber Glow */
+            animation: subtleFloating 20s linear infinite alternate;
+            border-radius: 8px;
+        }
+        #contact::before { width: 30vw; height: 30vw; top: 5%; left: -10vw; transform: rotate(15deg); animation-delay: 0s; }
+        #contact::after { width: 25vw; height: 25vw; bottom: 10%; right: -8vw; transform: rotate(-25deg); animation-delay: 3s; }
+
+
+        .contact-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        @media (min-width: 1024px) { 
+            .contact-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+            .contact-info-pane { grid-column: span 5 / span 5; }
+            .contact-form-pane { grid-column: span 7 / span 7; }
+        }
+
+        .contact-info-pane h3 { color: var(--white-pure); text-shadow: 0 0 8px var(--accent-cyber-glow); }
+        .contact-info-pane p, .contact-info-pane a { color: var(--text-cosmic-dust); }
+        .contact-info-pane a:hover { color: var(--accent-cyber-glow); text-shadow: 0 0 5px var(--accent-cyber-glow); }
+        .contact-info-icon { color: var(--accent-cyber-glow); transition: transform 0.3s ease, filter 0.3s ease; }
+        .contact-info-pane div:hover .contact-info-icon { transform: scale(1.25) rotate(-15deg); filter: drop-shadow(0 0 5px var(--accent-cyber-glow));}
+
+
+        .contact-form-card { 
+            background-color: rgba(26, 26, 61, 0.8); /* bg-card-nebula with alpha */
+            backdrop-filter: blur(10px); 
+            border: 1px solid var(--border-cyber);
+            transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+            perspective: 1000px;
+            border-radius: 0.75rem; 
+            box-shadow: 0 10px 30px var(--shadow-dark);
+        }
+        .contact-form-card:hover {
+            box-shadow: 0 0 25px var(--shadow-glow), 0 15px 40px var(--shadow-dark);
+            transform: translateY(-8px);
+        }
+        .contact-form-card label { color: var(--text-starbright); font-weight: 500; }
+        .contact-form-card input, .contact-form-card textarea, .contact-form-card select {
+            background-color: var(--bg-element-dark); color: var(--text-starbright); border: 1px solid var(--border-cyber);
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-form-card input::placeholder, .contact-form-card textarea::placeholder { color: var(--text-cosmic-dust); opacity: 0.6; }
+        .contact-form-card input:focus, .contact-form-card textarea:focus, .contact-form-card select:focus {
+            border-color: var(--accent-cyber-glow); 
+            box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.25), 0 0 10px var(--accent-cyber-glow) inset;
+            background-color: var(--bg-card-nebula); 
+        }
+        .contact-form-card button[type="submit"] { 
+            background: linear-gradient(90deg, var(--accent-cyber-glow), var(--accent-secondary-flare)); 
+            color: var(--bg-deep-space); font-weight: 700; letter-spacing: 0.05em;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.2), 0 2px 8px rgba(255,0,193,0.2);
+        }
+        .contact-form-card button[type="submit"]:hover { 
+            background-position: right center; /* For gradient shift if using bg-size 200% */
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 240, 255, 0.3), 0 4px 12px rgba(255,0,193,0.3);
+        }
+        .contact-form-card button[type="submit"]:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+        .contact-form-card .form-field-group {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUpDelayed 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; 
+        }
+
+
+        /* AI Feature styling */
+        .btn-ai { 
+            background: linear-gradient(90deg, var(--accent-cyber-glow), var(--accent-secondary-flare)); 
+            color: var(--bg-deep-space); font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 2px 10px rgba(0, 240, 255, 0.15), 0 1px 5px rgba(255,0,193,0.15);
+        }
+        .btn-ai:hover { transform: scale(1.03) translateY(-1px); box-shadow: 0 4px 15px rgba(0, 240, 255, 0.25), 0 2px 8px rgba(255,0,193,0.25); }
+        .ai-response-container {
+            background-color: #050510; border: 1px solid var(--border-cyber); color: var(--text-cosmic-dust);
+            padding: 1rem; margin-top: 1rem; border-radius: 0.375rem;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, padding 0.3s ease, margin 0.3s ease; 
+            max-height: 0; opacity: 0; overflow: hidden; padding-top:0; padding-bottom:0; margin-top:0;
+        }
+        .ai-response-container.visible { max-height: 500px; opacity: 1; padding: 1rem; margin-top: 1rem; }
+        .ai-response-container h4 { color: var(--accent-cyber-glow); font-size: 1.1em; margin-bottom: 0.5rem; text-shadow: 0 0 3px var(--accent-cyber-glow); }
+        .ai-response-container p { margin-bottom: 0.5rem; }
+        .ai-response-container strong { color: var(--text-starbright); }
+        .ai-response-container ul { list-style-type: none; padding-left: 0; }
+        .ai-response-container li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; }
+        .ai-response-container li::before { content: '⚡'; position: absolute; left: 0; color: var(--accent-cyber-glow); }
+
+
+        /* Footer */
+        footer { background-color: #020c1b; color: var(--text-cosmic-dust); border-top: 1px solid var(--border-cyber); }
+        footer a { color: var(--text-cosmic-dust); }
+        footer a:hover { color: var(--accent-cyber-glow); text-shadow: 0 0 5px var(--accent-cyber-glow); }
+        .form-success-message, .form-error-message { color: var(--bg-deep-space) } 
+
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav id="navbar" class="p-4 fixed w-full top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#home" class="text-2xl md:text-3xl font-black tracking-tighter transition-colors">FE.</a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#home" class="px-3 py-2 rounded-md text-sm font-semibold active">Home</a>
+                <a href="#about" class="px-3 py-2 rounded-md text-sm font-semibold">About</a>
+                <a href="#ai-insights" class="px-3 py-2 rounded-md text-sm font-semibold">AI Insights</a>
+                <a href="#services" class="px-3 py-2 rounded-md text-sm font-semibold">Services</a>
+                <a href="#contact" class="px-3 py-2 rounded-md text-sm font-semibold">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-text-bright hover:text-accent-cyber-glow focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden absolute top-full left-0 w-full shadow-lg py-2 transform -translate-y-full">
+            <a href="#home" class="block px-4 py-3 text-sm font-semibold transition-colors">Home</a>
+            <a href="#about" class="block px-4 py-3 text-sm font-semibold transition-colors">About</a>
+            <a href="#ai-insights" class="block px-4 py-3 text-sm font-semibold transition-colors">AI Insights</a>
+            <a href="#services" class="block px-4 py-3 text-sm font-semibold transition-colors">Services</a>
+            <a href="#contact" class="block px-4 py-3 text-sm font-semibold transition-colors">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen flex items-center justify-center bg-cover bg-center pt-16 md:pt-20" style="background-image: url('images/background.jpg');">
+        <div class="absolute inset-0 bg-gradient-to-br from-black via-transparent to-black opacity-75"></div>
+        <div class="container mx-auto text-center relative z-10 p-6">
+            <div class="md:flex items-center justify-around">
+                <div class="md:w-3/5 text-white mb-10 md:mb-0 md:text-left">
+                    <h1 class="hero-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight text-white-pure">
+                        Mechanical Design
+                    </h1>
+                     <p class="hero-subheadline text-lg sm:text-xl md:text-2xl lg:text-3xl mb-10 animate-fadeInUpDelayed opacity-0" style="animation-delay: 3.2s;">
+                        Crafting cutting-edge engineering solutions that fuse <span class="text-accent-cyber-glow font-semibold">creativity</span> with <span class="text-accent-cyber-glow font-semibold">precision</span>.
+                    </p>
+                    <a href="#contact" class="hero-button btn-shine font-bold py-3 px-8 md:py-4 md:px-10 rounded-md text-base md:text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 inline-block animate-fadeInUpDelayed opacity-0">
+                        Let's Engineer Your Vision
+                    </a>
+                </div>
+                <div class="hero-image-container md:w-2/5 flex justify-center animate-fadeInUpDelayed opacity-0">
+                    <img src="images/profile.jpg" alt="Fady Emad - Mechanical Engineer" class="rounded-full shadow-2xl w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 object-cover border-4 transform transition-transform duration-500 hover:scale-105"
+                         onerror="this.onerror=null; this.src='https://placehold.co/320x320/233554/00F0FF?text=Fady+Emad'; this.classList.add('p-4', 'bg-dark-blue-light', 'border-accent-cyber-glow');">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 md:py-24 bg-dark-blue-light">
+        <div class="container mx-auto px-6">
+            <h2 class="section-heading text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-center">Who I Am</h2>
+            <div class="max-w-3xl mx-auto text-center mb-12 animate-fadeInUpDelayed opacity-0" style="animation-delay: 0.2s;">
+                <p class="text-lg md:text-xl mb-6 leading-relaxed">
+                    Hello! I'm Fady Emad, a dedicated mechanical engineer with a passion for developing innovative and efficient design solutions.
+                    My expertise lies in CAD modeling, comprehensive structural analysis, and end-to-end product development.
+                </p>
+                <p class="text-lg md:text-xl leading-relaxed">
+                    I thrive on transforming complex engineering challenges into elegant, practical, and high-performing outcomes. Let's collaborate to bring your mechanical visions to vibrant life!
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="ai-insights" class="py-16 md:py-24 bg-dark-blue">
+        <div class="container mx-auto px-6">
+            <h2 class="section-heading text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-center">Unlock Project Potential</h2>
+            <div class="max-w-2xl mx-auto bg-dark-blue-light p-6 md:p-8 rounded-lg shadow-xl animate-fadeInUpDelayed opacity-0" style="animation-delay: 0.3s;">
+                <p class="text-center mb-6">Have an engineering challenge or a project idea? Describe it below, and let AI suggest how my skills can help!</p>
+                <textarea id="ai-insight-input" rows="4" class="w-full p-3 rounded-md focus:border-accent-cyber-glow focus:ring-accent-cyber-glow placeholder-text-cosmic-dust" placeholder="e.g., 'I need to design a lightweight drone frame' or 'Optimize a heat exchanger for better efficiency'"></textarea>
+                <button id="ai-insight-button" class="btn-ai w-full mt-4 py-3 px-6 rounded-md text-base font-semibold inline-flex items-center justify-center">
+                    <span class="mr-2">🚀</span> Analyze with AI
+                </button>
+                <div id="ai-insight-response" class="ai-response-container mt-6 min-h-[100px]">
+                    <p class="text-center italic">AI is processing your request...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-16 md:py-24 bg-dark-blue-light">
+        <div class="container mx-auto px-6">
+            <h2 class="section-heading text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16">What I Offer</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-box p-6 md:p-8 rounded-lg shadow-lg animate-zoomInHeavy opacity-0" style="animation-delay: 0.1s;">
+                    <img src="https://cdn-icons-png.freepik.com/512/6741/6741137.png" alt="CAD Icon" class="service-icon mx-auto mb-6 h-20 w-20" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/80x80/00F0FF/0F0F28?text=CAD'; this.classList.add('p-2');"
+                         onclick="openServiceModal('CAD Modeling', 'Precise 2D and 3D design solutions for mechanical components, assemblies, and systems. Specializing in parametric modeling and detailed drafting for manufacturing.', ['images/cad-example.jpg', 'images/mouse.jpg', 'images/bikeF.jpg', 'images/bikeT.jpg', 'videos/bik.mp4'], '$50 - $150 (Complexity Dependent)')">
+                    <h3 class="text-xl md:text-2xl font-semibold mb-3 text-center">CAD Modeling</h3>
+                    <p class="text-sm md:text-base text-center mb-4 leading-relaxed">Precise 2D/3D design solutions for components & assemblies.</p>
+                    <p class="text-center font-bold text-lg md:text-xl mb-5">$50 - $150</p>
+                    <button onclick="openServiceModal('CAD Modeling', 'Precise 2D and 3D design solutions for mechanical components, assemblies, and systems. Specializing in parametric modeling and detailed drafting for manufacturing.', ['images/cad-example.jpg', 'images/mouse.jpg', 'images/bikeF.jpg', 'images/bikeT.jpg', 'videos/bik.mp4'], '$50 - $150 (Complexity Dependent)')" class="service-button w-full py-2.5 px-5 rounded-md text-sm font-semibold">View Details <span class="arrow-icon ml-1">→</span></button>
+                </div>
+
+                <div class="service-box p-6 md:p-8 rounded-lg shadow-lg animate-zoomInHeavy opacity-0" style="animation-delay: 0.3s;">
+                     <img src="https://cdn-icons-png.flaticon.com/512/5360/5360529.png" alt="Simulation Icon" class="service-icon mx-auto mb-6 h-20 w-20" 
+                          onerror="this.onerror=null; this.src='https://placehold.co/80x80/00F0FF/0F0F28?text=Sim'; this.classList.add('p-2');"
+                          onclick="openServiceModal('Engineering Simulations', 'Advanced thermal, structural (FEA), and fluid dynamic (CFD) simulations to validate designs, optimize performance, and predict real-world behavior.', ['images/simulation-example.jpg', 'videos/diff.mp4', 'videos/sus.mp4'], '$70 - $200 (Complexity Dependent)')">
+                    <h3 class="text-xl md:text-2xl font-semibold mb-3 text-center">Engineering Simulations</h3>
+                    <p class="text-sm md:text-base text-center mb-4 leading-relaxed">Thermal, structural & fluid dynamic simulations for design validation.</p>
+                    <p class="text-center font-bold text-lg md:text-xl mb-5">$70 - $200</p>
+                     <button onclick="openServiceModal('Engineering Simulations', 'Advanced thermal, structural (FEA), and fluid dynamic (CFD) simulations to validate designs, optimize performance, and predict real-world behavior.', ['images/simulation-example.jpg', 'videos/diff.mp4', 'videos/sus.mp4'], '$70 - $200 (Complexity Dependent)')" class="service-button w-full py-2.5 px-5 rounded-md text-sm font-semibold">View Details <span class="arrow-icon ml-1">→</span></button>
+                </div>
+
+                <div class="service-box p-6 md:p-8 rounded-lg shadow-lg animate-zoomInHeavy opacity-0" style="animation-delay: 0.5s;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2117/2117014.png" alt="Product Design Icon" class="service-icon mx-auto mb-6 h-20 w-20" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/80x80/00F0FF/0F0F28?text=Design'; this.classList.add('p-2');"
+                         onclick="openServiceModal('Product Design & Development', 'From conceptualization to prototyping and DFM. Creating innovative and user-centric products tailored to industrial and consumer needs.', ['images/imagesdesign-example-1.jpg', 'images/imagesdesign-example-2.jpg', 'videos/design-example.mp4'], '$100 - $500+ (Scope Dependent)')">
+                    <h3 class="text-xl md:text-2xl font-semibold mb-3 text-center">Product Design</h3>
+                    <p class="text-sm md:text-base text-center mb-4 leading-relaxed">Innovative concepts for industrial & consumer needs, from idea to prototype.</p>
+                    <p class="text-center font-bold text-lg md:text-xl mb-5">$100 - $500+</p>
+                    <button onclick="openServiceModal('Product Design & Development', 'From conceptualization to prototyping and DFM. Creating innovative and user-centric products tailored to industrial and consumer needs.', ['images/imagesdesign-example-1.jpg', 'images/imagesdesign-example-2.jpg', 'videos/design-example.mp4'], '$100 - $500+ (Scope Dependent)')" class="service-button w-full py-2.5 px-5 rounded-md text-sm font-semibold">View Details <span class="arrow-icon ml-1">→</span></button>
+                </div>
+            </div>
+            <div class="mt-12 md:mt-16 bg-dark-blue text-text-bright p-8 md:p-10 rounded-lg shadow-xl text-center animate-fadeInUpDelayed opacity-0" style="animation-delay: 0.6s;">
+                <h3 class="text-2xl md:text-3xl font-semibold mb-4 text-accent-cyber-glow">Project Timelines</h3>
+                <p class="text-base md:text-lg">Your project will typically be completed within 1 to 8 working days, contingent on its complexity and scope.</p>
+                <p class="text-base md:text-lg mt-3">For detailed discussions or clarifications, please don't hesitate to <a href="#contact" class="text-accent-cyber-glow hover:underline font-semibold">reach out</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="serviceModal" class="modal fixed inset-0 bg-black bg-opacity-85 flex items-center justify-center p-4 z-[60] opacity-0 invisible">
+        <div class="modal-content rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 md:p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="modalTitle" class="text-2xl md:text-3xl font-bold">Service Details</h3>
+                <button onclick="closeServiceModal()" class="text-text-cosmic-dust hover:text-accent-cyber-glow text-4xl transition-colors">&times;</button>
+            </div>
+            <div id="modalSliderContainer" class="mb-6 relative bg-dark-blue-light rounded-md overflow-hidden shadow-inner">
+                <div id="modalSlider" class="slider"></div>
+                <button id="modalPrevBtn" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black bg-opacity-60 text-white p-2.5 rounded-full hover:bg-opacity-80 transition-opacity text-xl z-10 leading-none flex items-center justify-center w-10 h-10 shadow-md">❮</button>
+                <button id="modalNextBtn" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black bg-opacity-60 text-white p-2.5 rounded-full hover:bg-opacity-80 transition-opacity text-xl z-10 leading-none flex items-center justify-center w-10 h-10 shadow-md">❯</button>
+            </div>
+            <p id="modalDescription" class="mb-4 leading-relaxed text-base"></p>
+            <p id="modalPrice" class="text-2xl md:text-3xl font-bold mb-6"></p>
+            <a href="#contact" onclick="closeServiceModal()" class="block w-full text-center py-3 px-6 rounded-md transition-colors text-base font-semibold shadow-md hover:shadow-lg">
+                Inquire About This Service
+            </a>
+        </div>
+    </div>
+
+    <section id="contact" class="py-16 md:py-24 bg-cover bg-center relative" style="background-image: url('images/contact-us.jpg');">
+        <div class="absolute inset-0 bg-dark-blue opacity-90"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="section-heading text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 animate-fadeInUpDelayed opacity-0">Let's Connect</h2>
+            
+            <div class="contact-grid max-w-5xl mx-auto items-center">
+                <div class="contact-info-pane lg:pr-10 animate-slideInLeftSkew opacity-0" style="animation-delay: 0.2s;">
+                    <h3 class="text-3xl font-bold mb-4 text-white-pure">Start a Conversation</h3>
+                    <p class="text-lg mb-6 leading-relaxed">
+                        Ready to discuss your next engineering challenge? Or perhaps you have a question about my services? I'm here to help transform your ideas into reality.
+                    </p>
+                    <p class="text-lg mb-6 leading-relaxed">
+                        Fill out the form, and I'll get back to you as soon as possible. For urgent matters or direct file uploads, please use the provided links.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <svg class="contact-info-icon h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
+                            <a href="mailto:youremail@example.com" class="hover:underline">youremail@example.com</a>
+                        </div>
+                        <div class="flex items-center">
+                             <svg class="contact-info-icon h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.414-1.415L11 9.586V6z" clip-rule="evenodd" /></svg>
+                            <span>Available for projects globally (Remote)</span>
+                        </div>
+                         <div class="flex items-center">
+                            <svg class="contact-info-icon h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /> </svg>
+                            <span>Typical Response Time: Within 24 hours</span>
+                        </div>
+                    </div>
+                     <p class="text-sm mt-8">
+                        For direct file uploads: <a href="https://docs.google.com/forms/d/e/1FAIpQLSeyFN7KOrKm1GE8FhlWMQal8pv2nuLiSy7Ylpyc6QMUz9Nl9Q/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="text-accent-cyber-glow hover:underline font-semibold">Secure Google Form</a>.
+                    </p>
+                </div>
+
+                <div class="contact-form-pane animate-slideInRightSkew opacity-0" style="animation-delay: 0.4s;">
+                    <div class="contact-form-card p-6 md:p-8 rounded-lg shadow-2xl">
+                        <form id="contact-form">
+                            <div class="form-field-group grid sm:grid-cols-2 gap-x-6 gap-y-5 mb-5" style="animation-delay: 0.5s;">
+                                <div>
+                                    <label for="name" class="block text-xs font-medium mb-1">Full Name</label>
+                                    <input type="text" id="name" name="name" placeholder="Your Full Name" required class="w-full px-4 py-2.5 rounded-md text-sm">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-xs font-medium mb-1">Email Address</label>
+                                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required class="w-full px-4 py-2.5 rounded-md text-sm">
+                                </div>
+                            </div>
+                            <div class="form-field-group mb-5" style="animation-delay: 0.6s;">
+                                <label for="phone" class="block text-xs font-medium mb-1">Phone Number (Optional)</label>
+                                <div class="flex">
+                                    <select name="country-code" id="country-code" class="px-3 py-2.5 rounded-l-md text-sm">
+                                        <option value="+20" data-flag="eg" selected>🇪🇬 +20</option>
+                                        <option value="+1" data-flag="us">🇺🇸 +1</option>
+                                        <option value="+44" data-flag="gb">🇬🇧 +44</option>
+                                        <option value="+966" data-flag="sa">🇸🇦 +966</option>
+                                        <option value="+971" data-flag="ae">🇦🇪 +971</option>
+                                    </select>
+                                    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" class="w-full px-4 py-2.5 rounded-r-md border-l-0 text-sm">
+                                </div>
+                            </div>
+                             <div class="form-field-group mb-5" style="animation-delay: 0.7s;">
+                                <label class="block text-xs font-medium mb-2">Services Interested In (Optional)</label>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-sm">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" name="services_interest" value="CAD Modeling" class="h-4 w-4 text-accent-cyber-glow bg-dark-blue border-dark-blue-border rounded focus:ring-accent-cyber-glow">
+                                        <span class="ml-2">CAD Modeling</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" name="services_interest" value="Engineering Simulations" class="h-4 w-4 text-accent-cyber-glow bg-dark-blue border-dark-blue-border rounded focus:ring-accent-cyber-glow">
+                                        <span class="ml-2">Engineering Simulations</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" name="services_interest" value="Product Design" class="h-4 w-4 text-accent-cyber-glow bg-dark-blue border-dark-blue-border rounded focus:ring-accent-cyber-glow">
+                                        <span class="ml-2">Product Design & Development</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-field-group mb-5" style="animation-delay: 0.8s;">
+                                <label for="message" class="block text-xs font-medium mb-1">Your Message</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Tell me about your project or inquiry..." required class="w-full px-4 py-2.5 rounded-md text-sm"></textarea>
+                            </div>
+
+                            <div class="form-field-group my-4 text-center" style="animation-delay: 0.9s;">
+                                <button type="button" id="enhance-inquiry-button" class="btn-ai py-2 px-5 rounded-md text-sm inline-flex items-center justify-center">
+                                    ✨ Enhance My Inquiry with AI
+                                </button>
+                            </div>
+                            <div id="gemini-suggestions-container" class="mb-5 p-3 border border-dark-blue-border rounded-md bg-dark-blue min-h-[50px] text-xs">
+                                <p class="text-center italic">Click "Enhance My Inquiry" for AI-powered suggestions to refine your message.</p>
+                            </div>
+                            <div class="form-field-group" style="animation-delay: 1s;">
+                                <button type="submit" id="submit-button" class="w-full font-bold py-3 px-6 rounded-md text-base shadow-md">
+                                    Send Your Message
+                                </button>
+                            </div>
+                            <div id="form-message-container" class="text-center text-xs mt-3"></div>
+                        </form>
+                        <p class="text-xs mt-5 text-center text-text-cosmic-dust">
+                            Your information is handled with care. AI suggestions are for guidance only.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 md:py-16 text-center">
+        <div class="container mx-auto">
+            <p class="mb-2 text-base">&copy; <span id="currentYear"></span> Fady Emad. All Rights Reserved.</p>
+            <p class="mb-3 text-sm">Let's connect and create something amazing:</p>
+            <div class="flex justify-center space-x-5 mt-3 mb-5">
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="transition-transform transform hover:scale-125 text-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="transition-transform transform hover:scale-125 text-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="mailto:youremail@example.com" class="transition-transform transform hover:scale-125 text-xl">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                </a>
+            </div>
+            <p class="text-xs mt-6 text-text-cosmic-dust">Built with Passion & Precision | Tailwind CSS & AI</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        // Tailwind Colors (for JS)
+        const twColors = {
+            'dark-blue': '#0a192f',
+            'dark-blue-light': '#112240',
+            'dark-blue-border': '#233554',
+            'text-bright': '#E0E7FF', 
+            'text-secondary-bright': '#C0C5D0',
+            'mint-accent': '#64ffda', // Keeping this as it's used in prompts
+            'cyber-glow': '#00F0FF', // New primary accent
+            'secondary-flare': '#FF00C1', // New secondary accent
+            'white-pure': '#FFFFFF',
+            'text-starbright': '#F0F8FF',
+            'text-cosmic-dust': '#A0A8C0',
+        }
+
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('-translate-y-full'); 
+                mobileMenu.classList.toggle('translate-y-0'); 
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden', '-translate-y-full');
+                    mobileMenu.classList.remove('translate-y-0');
+                });
+            });
+        }
+
+        // --- Navigation Active State ---
+        const desktopNavLinks = document.querySelectorAll('#navbar .hidden.md\\:flex a');
+        const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+        const sections = document.querySelectorAll('section[id]');
+        const navbar = document.getElementById('navbar'); 
+        
+        function updateActiveNavLink() {
+            let currentSectionId = 'home'; 
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - navbar.offsetHeight - 150; 
+                if (scrollY >= sectionTop) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+            
+            desktopNavLinks.forEach(link => {
+                link.classList.remove('active', 'text-accent-cyber-glow'); 
+                link.classList.add('text-text-cosmic-dust'); 
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('active', 'text-accent-cyber-glow');
+                }
+            });
+            mobileNavLinks.forEach(link => {
+                link.classList.remove('bg-dark-blue-border', 'text-accent-cyber-glow');
+                link.classList.add('text-text-cosmic-dust');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('bg-dark-blue-border', 'text-accent-cyber-glow');
+                }
+            });
+        }
+        window.addEventListener('scroll', updateActiveNavLink);
+        document.addEventListener('DOMContentLoaded', updateActiveNavLink); 
+        
+        // --- Service Modal & Slider ---
+        const serviceModal = document.getElementById('serviceModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalPrice = document.getElementById('modalPrice');
+        const modalSlider = document.getElementById('modalSlider');
+        const modalPrevBtn = document.getElementById('modalPrevBtn');
+        const modalNextBtn = document.getElementById('modalNextBtn');
+
+        let currentServiceMedia = []; // Changed from currentServiceImages to reflect mixed content
+        let currentMediaIndex = 0; // Changed from currentSlideIndex
+
+        function updateSlider() {
+            if (!modalSlider || currentServiceMedia.length === 0) {
+                if(modalPrevBtn) modalPrevBtn.style.display = 'none';
+                if(modalNextBtn) modalNextBtn.style.display = 'none';
+                return;
+            }
+            modalSlider.innerHTML = ''; // Clear previous items
+            const mediaPath = currentServiceMedia[currentMediaIndex];
+            const isVideo = mediaPath.toLowerCase().endsWith('.mp4');
+            
+            const itemContainer = document.createElement('div');
+            itemContainer.className = 'modal-slider-item w-full h-full flex justify-center items-center';
+
+
+            if (isVideo) {
+                const video = document.createElement('video');
+                video.src = mediaPath;
+                video.alt = modalTitle.textContent + " example video";
+                video.className = "w-full h-64 sm:h-72 md:h-96 object-contain rounded-md bg-dark-blue-light";
+                video.controls = true;
+                video.autoplay = true; 
+                video.muted = true; // Important for autoplay in most browsers
+                video.loop = true;
+                video.playsInline = true; // For iOS
+                video.onerror = function() { 
+                    itemContainer.innerHTML = `<img src='https://placehold.co/800x600/ef4444/0a192f?text=Video+Not+Found' alt='Video not found' class='w-full h-64 sm:h-72 md:h-96 object-contain rounded-md bg-dark-blue-light p-4'>`;
+                };
+                itemContainer.appendChild(video);
+            } else {
+                const img = document.createElement('img');
+                img.src = mediaPath; 
+                img.alt = modalTitle.textContent + " example image";
+                img.className = "w-full h-64 sm:h-72 md:h-96 object-contain rounded-md bg-dark-blue-light"; 
+                img.onerror = function() { 
+                    this.src='https://placehold.co/800x600/ef4444/0a192f?text=Image+Not+Found'; 
+                    this.alt='Image not found';
+                    this.classList.add('p-4'); 
+                };
+                 itemContainer.appendChild(img);
+            }
+            modalSlider.appendChild(itemContainer);
+
+
+            if(modalPrevBtn) modalPrevBtn.style.display = currentServiceMedia.length > 1 ? 'flex' : 'none'; 
+            if(modalNextBtn) modalNextBtn.style.display = currentServiceMedia.length > 1 ? 'flex' : 'none';
+        }
+
+        function openServiceModal(title, description, mediaArray, price) { // Changed images to mediaArray
+            if (!serviceModal || !modalTitle || !modalDescription || !modalPrice || !modalSlider) {
+                console.error("Modal elements not found");
+                return;
+            }
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+            modalPrice.textContent = price;
+            
+            currentServiceMedia = mediaArray; 
+            currentMediaIndex = 0;
+            
+            if (currentServiceMedia.length > 0) {
+                updateSlider(); // Initial call to load the first media item
+            } else {
+                modalSlider.innerHTML = ''; // Clear if no media
+                const placeholderImg = document.createElement('img');
+                placeholderImg.src = 'https://placehold.co/800x600/233554/8892b0?text=No+Examples+Available';
+                placeholderImg.alt = "No Examples Available";
+                placeholderImg.className = "w-full h-64 sm:h-72 md:h-96 object-contain rounded-md bg-dark-blue-light p-4";
+                modalSlider.appendChild(placeholderImg);
+                if(modalPrevBtn) modalPrevBtn.style.display = 'none'; 
+                if(modalNextBtn) modalNextBtn.style.display = 'none';
+            }
+            
+            serviceModal.classList.remove('invisible', 'opacity-0');
+            serviceModal.classList.add('open');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeServiceModal() {
+            if (!serviceModal) return;
+            // Pause any video playing in the modal before closing
+            const videoElement = modalSlider.querySelector('video');
+            if (videoElement) {
+                videoElement.pause();
+            }
+            serviceModal.classList.add('invisible', 'opacity-0');
+            serviceModal.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+
+        if (modalPrevBtn) {
+            modalPrevBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); 
+                currentMediaIndex = (currentMediaIndex - 1 + currentServiceMedia.length) % currentServiceMedia.length;
+                updateSlider();
+            });
+        }
+
+        if (modalNextBtn) {
+            modalNextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentMediaIndex = (currentMediaIndex + 1) % currentServiceMedia.length;
+                updateSlider();
+            });
+        }
+        
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && serviceModal && serviceModal.classList.contains('open')) {
+                closeServiceModal();
+            }
+        });
+        if (serviceModal) {
+             serviceModal.addEventListener('click', (event) => {
+                if (event.target === serviceModal) { 
+                    closeServiceModal();
+                }
+            });
+        }
+
+        // --- Contact Form (EmailJS) ---
+        (function() {
+            emailjs.init('YOUR_USER_ID'); 
+        })();
+
+        const contactForm = document.getElementById('contact-form');
+        const formMessageContainer = document.getElementById('form-message-container');
+        const submitButton = document.getElementById('submit-button');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                if (!submitButton || !formMessageContainer) return;
+
+                submitButton.disabled = true;
+                submitButton.innerHTML = `<span class="spinner"></span> Sending...`;
+                formMessageContainer.innerHTML = ''; 
+
+                const serviceID = 'YOUR_SERVICE_ID'; 
+                const templateID = 'YOUR_TEMPLATE_ID'; 
+                const userID = 'YOUR_USER_ID'; 
+
+                if (userID === 'YOUR_USER_ID' || serviceID === 'YOUR_SERVICE_ID' || templateID === 'YOUR_TEMPLATE_ID') {
+                    formMessageContainer.innerHTML = `<div class="form-error-message">EmailJS is not configured. Please update User ID, Service ID, and Template ID in the script.</div>`;
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Your Message';
+                    return;
+                }
+                
+                emailjs.sendForm(serviceID, templateID, this)
+                    .then(() => {
+                        formMessageContainer.innerHTML = `<div class="form-success-message">Thank you for your message! I'll get back to you shortly.</div>`;
+                        contactForm.reset();
+                        const suggestionsContainer = document.getElementById('gemini-suggestions-container');
+                        if (suggestionsContainer) {
+                            suggestionsContainer.innerHTML = '<p class="text-center italic text-text-cosmic-dust">Click "Enhance My Inquiry" for AI-powered suggestions to refine your message.</p>';
+                            suggestionsContainer.classList.remove('visible'); 
+                        }
+                         const aiInsightResponse = document.getElementById('ai-insight-response');
+                        if (aiInsightResponse) {
+                            aiInsightResponse.innerHTML = '<p class="text-center italic text-text-cosmic-dust">AI is processing your request...</p>';
+                            aiInsightResponse.classList.remove('visible'); 
+                        }
+
+                    }, (err) => {
+                        formMessageContainer.innerHTML = `<div class="form-error-message">Oops! Something went wrong. Error: ${err.text || JSON.stringify(err)}</div>`;
+                    })
+                    .finally(() => {
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Send Your Message';
+                    });
+            });
+        }
+
+        // --- Gemini API Integration ---
+        const GEMINI_API_KEY = ""; 
+
+        async function callGeminiAPI(prompt, buttonElement, responseContainer, loadingText = "Processing...") {
+            const originalButtonHTML = buttonElement.innerHTML;
+            buttonElement.disabled = true;
+            buttonElement.innerHTML = `<span class="spinner"></span> ${loadingText}`;
+            responseContainer.classList.remove('hidden'); 
+            responseContainer.classList.add('visible'); 
+            responseContainer.innerHTML = `<p class="text-center italic text-text-cosmic-dust animate-pulse">${loadingText}</p>`;
+
+            const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+            const payload = { contents: chatHistory };
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(`API Error: ${response.status} ${response.statusText}. Details: ${errorData?.error?.message || 'Unknown error'}`);
+                }
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    responseContainer.innerHTML = text; 
+                    return text; 
+                } else {
+                    responseContainer.innerHTML = `<p class="text-accent-secondary-flare text-center">No content received from AI. The response might be empty or not in the expected format.</p>`;
+                }
+            } catch (error) {
+                console.error("Gemini API call failed:", error);
+                responseContainer.innerHTML = `<p class="text-accent-secondary-flare text-center">Error: ${error.message}</p>`;
+            } finally {
+                buttonElement.disabled = false;
+                buttonElement.innerHTML = originalButtonHTML;
+            }
+            return null;
+        }
+
+        // AI Insight Generator
+        const aiInsightButton = document.getElementById('ai-insight-button');
+        const aiInsightInput = document.getElementById('ai-insight-input');
+        const aiInsightResponseContainer = document.getElementById('ai-insight-response');
+
+        if (aiInsightButton && aiInsightInput && aiInsightResponseContainer) {
+            aiInsightButton.addEventListener('click', async () => {
+                const userInput = aiInsightInput.value.trim();
+                if (!userInput) {
+                    aiInsightResponseContainer.innerHTML = '<p class="text-accent-cyber-glow text-center">Please describe your challenge or idea first.</p>';
+                    aiInsightResponseContainer.classList.remove('hidden');
+                    aiInsightResponseContainer.classList.add('visible');
+                    return;
+                }
+                const prompt = `A user is looking for mechanical engineering help from Fady Emad. Their initial thought/challenge is: "${userInput}".
+Based on this, identify up to 3 key mechanical engineering services Fady Emad offers (CAD Modeling, Engineering Simulations, Product Design & Development) that would be most relevant.
+For each relevant service:
+1. State the service name as a main heading (e.g., using <h4>Service Name</h4>). The heading text should be the electric cyan/blue color (hex: ${twColors['cyber-glow']}).
+2. Briefly explain *why* this service is relevant to the user's input (1-2 sentences). This text should be the lighter grey/blue color (hex: ${twColors['text-cosmic-dust']}).
+3. Suggest one specific, actionable way Fady could help them with related to that service and their input (1 sentence). This text should also be the lighter grey/blue color (hex: ${twColors['text-cosmic-dust']}), with any key deliverable or action in bold using the bright off-white text color (hex: ${twColors['text-starbright']}).
+Format the entire output as clean HTML. If no services seem directly relevant, provide a polite message suggesting a general consultation, using the lighter grey/blue text color (hex: ${twColors['text-cosmic-dust']}).
+Example for one service:
+<h4 style="color: ${twColors['cyber-glow']};">CAD Modeling</h4>
+<p style="color: ${twColors['text-cosmic-dust']};">This is relevant because precise digital models are crucial for visualizing and manufacturing your drone frame.</p>
+<p style="color: ${twColors['text-cosmic-dust']};"><strong>Fady can help by:</strong> <strong style="color: ${twColors['text-starbright']};">Creating a detailed 3D parametric model</strong> of your drone frame optimized for lightweight materials.</p>
+Ensure the output is directly usable as innerHTML. Do not include markdown or other non-HTML formatting. Use the provided color variables for styling the text within the HTML.`;
+                await callGeminiAPI(prompt, aiInsightButton, aiInsightResponseContainer, "Analyzing...");
+            });
+        }
+
+
+        // Gemini API for Enhancing Inquiry (Contact Form)
+        const enhanceButton = document.getElementById('enhance-inquiry-button');
+        if (enhanceButton) {
+            enhanceButton.addEventListener('click', async function() {
+                const messageTextarea = document.getElementById('message');
+                const suggestionsContainer = document.getElementById('gemini-suggestions-container');
+                const originalButtonHTML = this.innerHTML; 
+
+                if (!messageTextarea || !suggestionsContainer) {
+                    console.error("Required elements for Gemini feature not found.");
+                    return;
+                }
+                const userMessage = messageTextarea.value.trim();
+
+                if (!userMessage) {
+                    suggestionsContainer.innerHTML = '<p class="text-accent-cyber-glow font-semibold text-center">Please type your inquiry in the message box first.</p>';
+                    suggestionsContainer.classList.remove('hidden');
+                    suggestionsContainer.classList.add('visible');
+                    return;
+                }
+                const prompt = `You are a helpful assistant for someone drafting an inquiry to a mechanical engineer named Fady Emad. The client's current draft is: "${userMessage}".
+Please provide 2-3 concise suggestions to help them enhance their inquiry and make it clearer for Fady. These suggestions should help Fady understand their needs better. Suggestions could include:
+- Specific details they might add to clarify their needs (e.g., dimensions, materials, desired outcomes, project constraints, existing designs or problems).
+- Key questions they might consider asking Fady if they are unsure about certain aspects.
+- Ways to articulate their project goals or the problems they are trying to solve more effectively.
+Format your response as follows:
+Start with an encouraging sentence like: "<p class='text-sm text-text-cosmic-dust mb-2'>Here are a few AI-powered ideas to make your inquiry to Fady even clearer:</p>"
+Then, provide an HTML unordered list (ul) where each list item (li) is a suggestion, with text color being text-cosmic-dust (hex: ${twColors['text-cosmic-dust']}).
+Example list item: '<li style="color: ${twColors['text-cosmic-dust']};">Consider mentioning the specific industry or application for this project.</li>'
+Do not include any other preamble, explanation, or text outside of this structure. Only output the HTML for the sentence and the list.`;
+                
+                const suggestionsHTML = await callGeminiAPI(prompt, this, suggestionsContainer, "Getting Suggestions...");
+                if (suggestionsHTML) {
+                     suggestionsContainer.innerHTML = suggestionsHTML + '<p class="text-xs text-text-cosmic-dust mt-3 text-center">These suggestions are AI-generated. Feel free to use them to refine your message above.</p>';
+                }
+            });
+        }
+
+
+        // --- Footer Current Year ---
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+
+        // --- Intersection Observer for Animations ---
+        const animatedElements = document.querySelectorAll('.animate-fadeInUpDelayed, .animate-slideInLeftSkew, .animate-slideInRightSkew, .animate-zoomInHeavy');
+        if (typeof IntersectionObserver !== 'undefined') {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1'; 
+                        entry.target.classList.add('is-visible'); 
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, { threshold: 0.1 }); 
+
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        } else {
+            animatedElements.forEach(el => {
+                el.style.opacity = '1';
+            });
+        }
+
+    </script>
+</body>
+</html>
